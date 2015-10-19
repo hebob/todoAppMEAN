@@ -10,3 +10,5 @@ how to install:
 - run 'npm install'
 - run './mongod'
 - run 'npm start'
+
+...it should work..maybe
