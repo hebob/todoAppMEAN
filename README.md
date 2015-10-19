@@ -6,7 +6,7 @@ required:
 - npm
 
 how to install:
-download source
-run 'npm install'
-run './mongod'
-run 'npm start'
+- download source
+- run 'npm install'
+- run './mongod'
+- run 'npm start'
