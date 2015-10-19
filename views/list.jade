@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  table
+    thead
+      td Todo
+      td Priority
+      td Added
+      td Done
+    tbody
+      each val in todo_items
+        tr
+          td= val.task
+          td= val.priority
+          td= val.added
+          td
+            input(
+              type='checkbox'
+              checked= val.done
+            )
+
+  a(href='/lists') Back to main
