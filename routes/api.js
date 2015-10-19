@@ -38,7 +38,13 @@ router.put('/', function(req, res, next) {
             if (err) {
                 res.send(err);
             } else {
-                var listid = results[results.length - 1].id + 1;
+                var listid;
+                console.log(results);
+                if(results.length > 0) {
+                    listid = results[results.length - 1].id + 1;
+                } else {
+                    listid = 1;
+                }
                 dbf.getdb("list", function(collection) {
                     collection.insertOne({
                         id: listid,
@@ -62,8 +68,6 @@ router.put('/', function(req, res, next) {
 
 /* edit a list */
 router.post('/:id', function(req, res, next) {
-    console.log("post: ", req.body)
-    console.log("id: ", req.params.id)
     dbf.getdb("list", function(collection) {
         console.log("about to do post");
         collection.update(
