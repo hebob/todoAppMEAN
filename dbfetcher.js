@@ -3,38 +3,18 @@ var client = mongodb.MongoClient;
 
 var url = "mongodb://" + process.env.IP + ":27017/lists";
 
+var db;
+
+client.connect(url, function(err, database) {
+    if(err) throw err;
+    
+    db = database;
+})
+
 this.getdb = function(docName, callback) {
-    client.connect(url, function(err, db) {
-        if(err) {
-            throw err;
-        }
         var collection = db.collection(docName);
         callback(collection);
-    })
 }
-
-this.fetchAll = function(callback) {
-    client.connect(url, function(err, db) {
-        if(err) {
-            throw err;
-        }
-        
-        var collection = db.collection();
-    })
-}
-
-this.fetch = function (collectionName, callback) {
-    client.connect(url, function (err, db) {
-        if (err) {
-            throw err;
-        }
-
-        var collection = db.collection(collectionName);
-
-        callback(collection);
-    });
-};
-
 /*
 Database schema: one document holds list AND it's todos
 list = {
